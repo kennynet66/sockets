@@ -22,9 +22,11 @@ io.on('connection', (socket) => {
         console.log('Received message:', message);
         socket.broadcast.emit('message', message);
     });
-    socket.on('disconnect', () => {
-        console.log('A client disconnected');
-    });
+});
+io.use((socket, next) => {
+    const token = socket.handshake.auth.token;
+    console.log(token);
+    next();
 });
 const PORT = 3002;
 httpServer.listen(PORT, () => {

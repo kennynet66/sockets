@@ -1,6 +1,6 @@
-import { Server } from 'socket.io';
+import { Server, Socket } from 'socket.io';
 import { createServer } from 'http';
-import express, { Request, Response, json } from 'express';
+import express from 'express';
 import cors from 'cors';
 
 const app = express();
@@ -22,11 +22,13 @@ io.on('connection', (socket) => {
         
         socket.broadcast.emit('message', message);
     });
-
-    socket.on('disconnect', () => {
-        console.log('A client disconnected');
-    });
 });
+
+io.use((socket, next) => {
+    const token = socket.handshake.auth.token;
+    console.log(token);
+    next();
+})
 
 const PORT = 3002;
 httpServer.listen(PORT, () => {
