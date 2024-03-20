@@ -1,0 +1,14 @@
+<!-- <div class="messages"> -->
+    <div class="content">
+        <h1>Sendit</h1>
+        <div *ngIf="!messages.length">You have no messages</div>
+        <div class="input-div" *ngIf="messages">
+          <div class="messages">
+           <p *ngFor="let message of messages">{{message}}</p> 
+          </div>
+          <form class="input">
+            <textarea name="message" placeholder="Type here..." id="message" [(ngModel)]="message" resizeable="false"></textarea>
+            <input type="submit" value="Send" (click)="sendMessage()">
+          </form>
+        </div></div>
+      <!-- </div> -->

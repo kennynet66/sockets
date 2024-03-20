@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { ChatService } from './Services/chat.service';
-import { CommonModule } from '@angular/common';
+// import { ChatService } from './Services/chat.service';
 
 @Component({
   selector: 'app-root',
@@ -10,23 +9,25 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'sockets';
 
+  recepientId = "2"
+
   message:string = '';
   messages:any[] = []
-  constructor(private chat: ChatService){
+  // constructor(private chat: ChatService){
 
-    this.getMessage()
-  }
+    // this.getMessage()
+  // }
 
-  sendMessage(){
-    this.chat.sendMessage(this.message)
-    this.messages.push(this.message);
-    this.message = ''
-  }
+  // sendMessage(){
+  //   this.chat.sendMessage(this.message, this.recepientId)
+  //   this.messages.push(this.message);
+  //   this.message = ''
+  // }
 
-  getMessage(){
-    this.chat.getMessage().subscribe(data =>{
-      console.log(data);
-      this.messages.push(data)
-    })
-  }
+  // getMessage(){
+  //   this.chat.getMessage().subscribe(data =>{
+  //     console.log(data);
+  //     this.messages.push(data)
+  //   })
+  // }
 }
