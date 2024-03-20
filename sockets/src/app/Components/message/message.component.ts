@@ -16,7 +16,7 @@ export class MessageComponent implements OnInit {
     this.getUserId();
   }
 
-  recepientId = "2";
+  recipientId = "2";
   userId!: string;
 
   getUserId(){
@@ -45,7 +45,7 @@ export class MessageComponent implements OnInit {
 }
 
   sendMessage(){
-    this.socket.emit('message', {message: this.message, recepientId: this.recepientId});
+    this.socket.emit('message', {message: this.message, recipientId: this.recipientId});
   //   this.chat.sendMessage(this.message, this.recepientId)
     this.messages.push(this.message);
     this.message = ''
